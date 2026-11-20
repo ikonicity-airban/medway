@@ -12,7 +12,7 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 | 1 | Stack & architecture | Foundations | done |
 | 2 | Coding standards & tooling | Foundations | done |
 | 3 | Data model & local schema | Foundations | done |
-| 4 | Design system & UI foundation | Foundations | in-progress |
+| 4 | Design system & UI foundation | Foundations | done |
 | 5 | Emergency red flag triage & hospital escalation | Slice 1 | planned |
 | 6 | TISHIP routing & zero cost lock | Slice 2 | planned |
 | 7 | Auto reroute engine & partner directory | Slice 3 | planned |
