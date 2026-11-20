@@ -1,6 +1,6 @@
-# Architecture Map
+# Architecture Map: MedWay
 
-This document provides a topology map of the MedWay system, detailing directory organization, request lifecycles, and environment variable requirements. For detailed technical decisions, refer to [0001 Stack and Architecture](docs/specs/0001-stack-architecture.md) and [0002 Data Model and Persistence](docs/specs/0002-data-model.md).
+This document provides a topology map of the MedWay system, detailing directory organization, request lifecycles, and environment variable requirements. For detailed technical decisions, refer to [0001 Stack and Architecture](docs/specs/0001-stack-architecture/index.md) and [0002 Data Model and Persistence](docs/specs/0002-data-model.md).
 
 ## Directory layout
 

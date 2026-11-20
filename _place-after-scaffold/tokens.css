@@ -1,54 +1,85 @@
-@theme {
-  --color-canvas: #F8FAFC;
-  --color-surface: #FFFFFF;
-  --color-border: #64748B;
-  --color-muted: #64748B;
-  --color-body: #334155;
-  --color-ink: #0F172A;
-  --color-accent: #0369A1;
-  --color-on-accent: #FFFFFF;
-  --color-success: #047857;
-  --color-on-success: #FFFFFF;
-  --color-warning: #B45309;
-  --color-on-warning: #FFFFFF;
-  --color-error: #B91C1C;
-  --color-on-error: #FFFFFF;
+/*
+ * Chowlin AI Design Tokens
+ * Merge these CSS custom properties into your global stylesheet (e.g., globals.css) after scaffolding.
+ */
 
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+:root {
+  /* Light Palette (WCAG AA Verified) */
+  --color-canvas: #fafbf9;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-muted: #64748b; /* 4.58:1 on canvas */
+  --color-body: #334155; /* 9.98:1 on canvas */
+  --color-ink: #0f172a; /* 17.20:1 on canvas */
+  --color-accent: #047857; /* Emerald 700 */
+  --color-on-accent: #ffffff; /* 5.48:1 on accent */
+  --color-success: #15803d;
+  --color-error: #dc2626;
+  --color-warning: #d97706; /* Amber 600 Ulcer Alert */
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
+  /* Typography */
+  --font-family-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-heading: "Plus Jakarta Sans", "Inter", sans-serif;
 
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
+  /* Modular Type Scale (Base 16px, Ratio 1.200 Minor Third) */
+  --font-size-xs: 0.694rem; /* 11.1px */
+  --font-size-sm: 0.833rem; /* 13.3px */
+  --font-size-base: 1rem; /* 16.0px */
+  --font-size-lg: 1.2rem; /* 19.2px */
+  --font-size-xl: 1.44rem; /* 23.0px */
+  --font-size-2xl: 1.728rem; /* 27.6px */
+  --font-size-3xl: 2.074rem; /* 33.2px */
 
-  --transition-fast: 80ms ease-out;
-  --transition-normal: 160ms ease-out;
-  --transition-slow: 240ms ease-out;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-body: 1.5;
+  --line-height-heading: 1.2;
+
+  /* Spacing Scale (4px base, 8px rhythm) */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Icon Sizes */
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 32px;
+
+  /* Elevation (Hairline Border Focus, Minimal Shadows) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+
+  /* Transitions and Motion */
+  --motion-fast: 120ms ease-out;
+  --motion-standard: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-canvas: #0F172A;
-    --color-surface: #1E293B;
-    --color-border: #64748B;
-    --color-muted: #94A3B8;
-    --color-body: #CBD5E1;
-    --color-ink: #F8FAFC;
-    --color-accent: #7DD3FC;
-    --color-on-accent: #082F49;
-    --color-success: #6EE7B7;
-    --color-on-success: #064E3B;
-    --color-warning: #FCD34D;
-    --color-on-warning: #78350F;
-    --color-error: #FCA5A5;
-    --color-on-error: #450A0A;
-  }
+.dark {
+  /* Dark Palette (WCAG AA Verified) */
+  --color-canvas: #090d0b;
+  --color-surface: #121a15;
+  --color-border: #1e2c24;
+  --color-muted: #94a3b8; /* 7.63:1 on dark canvas */
+  --color-body: #cbd5e1; /* 13.17:1 on dark canvas */
+  --color-ink: #f8fafc; /* 18.69:1 on dark canvas */
+  --color-accent: #10b981; /* Emerald 500 */
+  --color-on-accent: #042f2e; /* 5.70:1 on accent */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
 }

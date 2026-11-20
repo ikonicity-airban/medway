@@ -1,4 +1,4 @@
-# UI Rules
+# UI Rules: MedWay
 
 This guide specifies how engineers and coding agents build user interfaces for MedWay. Always read [design.md](design.md) first for overall art direction and color philosophy.
 

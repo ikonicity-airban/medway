@@ -1,10 +1,10 @@
-# Project Overview
+# Project Overview: MedWay
 
 ## Overview
-MedWay is a campus healthcare logistics router and pre-triage web platform built for tertiary institutions in Nigeria, piloted at the University of Nigeria Nsukka (UNN). It connects sick students to appropriate care destinations within 30 seconds while eliminating avoidable clinic queue delays.
+MedWay is a campus healthcare logistics router and pre-triage web platform built for tertiary institutions in Nigeria, piloted at the University of Nigeria, Nsukka (UNN). It connects sick students to appropriate care destinations within 30 seconds while eliminating avoidable clinic queue delays and preventing unverified self-medication.
 
 ## Core value
-MedWay resolves the blind multi-hour clinic queue bottleneck on university campuses. By providing deterministic emergency danger sign screening, real time stock availability across essential care categories, and a student self-advocacy intake pass, it empowers students to access care safely without falling victim to unverified self-medication.
+Eliminate blind multi-hour clinic queue bottlenecks and prevent dangerous self-medication by screening emergency danger signs, providing live stock visibility across essential care categories, and issuing student self-advocacy intake passes.
 
 ## Pages and routes
 

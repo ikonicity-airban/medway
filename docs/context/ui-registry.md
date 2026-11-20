@@ -1,4 +1,4 @@
-# UI Registry
+# UI Registry: MedWay
 
 Update this registry whenever you add or modify a shared component.
 

@@ -1,4 +1,4 @@
-# Library Documentation
+# Library Documentation: MedWay
 
 This document records the verified external libraries, pinned versions, installation commands, and minimal code snippets required for MedWay.
 

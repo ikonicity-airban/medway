@@ -9,8 +9,8 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 
 | # | Feature | Phase | Status |
 |---|---|---|---|
-| 1 | Stack & architecture | Foundations | in-progress |
-| 2 | Coding standards & tooling | Foundations | planned |
+| 1 | Stack & architecture | Foundations | done |
+| 2 | Coding standards & tooling | Foundations | done |
 | 3 | Data model & local schema | Foundations | planned |
 | 4 | Design system & UI foundation | Foundations | planned |
 | 5 | Emergency red flag triage & hospital escalation | Slice 1 | planned |
@@ -22,20 +22,20 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 
 ## Foundations
 
-### 1. Stack & architecture · in-progress
+### 1. Stack & architecture · done
 Scaffold the Next.js 15 App Router project with TypeScript, Tailwind CSS v4, and offline service worker configuration.
 **Done when:** the development server boots cleanly, routes render without warnings, and offline shell caching is confirmed.
 Spec 0001 (docs/specs/0001-stack-architecture/index.md) · code in `src/app/`
 - [x] Decide the stack (spec): /architect stack & architecture
 - [x] Scaffold from the decision: /develop stack & architecture
-- [ ] Smoke-check it runs: /test
+- [x] Smoke-check it runs: /test
 
-### 2. Coding standards & tooling · planned
+### 2. Coding standards & tooling · done
 Establish formatting, linting, pre-commit hooks, and Vitest test runner configuration.
 **Done when:** linting passes with zero errors, TypeScript compiles strictly, and pre-commit checks run on staged files.
-- [ ] Capture conventions + tooling choices: /audit
-- [ ] Install the tooling: /develop tooling
-- [ ] Check it runs clean: /test
+- [x] Capture conventions + tooling choices: /audit
+- [x] Install the tooling: /develop tooling
+- [x] Check it runs clean: /test
 
 ### 3. Data model & local schema · planned
 Implement TypeScript domain models, Zod validation schemas, IndexedDB offline tables, and Supabase PostgreSQL schema migrations.

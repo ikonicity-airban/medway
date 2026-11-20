@@ -1,4 +1,4 @@
-# Code Standards
+# Code Standards: MedWay
 
 This document establishes the technical conventions, typing standards, and architectural rules for MedWay.
 
@@ -19,7 +19,7 @@ MedWay follows clean architecture boundaries. Pure business logic (such as deter
 ## Folder structure
 Code is organized by feature slices under `src/`:
 - `src/app/`: Next.js App Router pages and layout shells.
-- `src/features/`: Co-located feature modules (components, hooks, tests) for `router`, `intake-pass`, `partner`, and `telemetry`.
+- `src/features/`: Co-located feature modules (components, hooks, tests) for `router`, `triage`, `intake-pass`, `partner`, and `telemetry`.
 - `src/lib/`: Pure domain logic, scoring math, and utility functions.
 - `src/types/`: Shared TypeScript data contracts and Zod validation schemas.
 - `src/components/ui/`: Reusable, accessible UI primitives (buttons, inputs, cards, badges).

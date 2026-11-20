@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "MedWay — Campus Care Router & Pre-Triage",
-  description: "Waze for campus healthcare. Deterministic emergency screening, TISHIP clinic routing, and verified off-campus pharmacy telemetry for UNN students.",
+  description:
+    "Waze for campus healthcare. Deterministic emergency screening, TISHIP clinic routing, and verified off-campus pharmacy telemetry for UNN students.",
   manifest: "/manifest.json",
 };
 
@@ -14,11 +15,7 @@ export const viewport: Viewport = {
   themeColor: "#0F172A",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-canvas text-body antialiased flex flex-col items-center">
