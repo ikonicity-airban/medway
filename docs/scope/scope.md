@@ -25,7 +25,7 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 ### 1. Stack & architecture · in-progress
 Scaffold the Next.js 15 App Router project with TypeScript, Tailwind CSS v4, and offline service worker configuration.
 **Done when:** the development server boots cleanly, routes render without warnings, and offline shell caching is confirmed.
-Spec 0001 · code in `src/app/`
+Spec 0001 (docs/specs/0001-stack-architecture/index.md) · code in `src/app/`
 - [x] Decide the stack (spec): /architect stack & architecture
 - [x] Scaffold from the decision: /develop stack & architecture
 - [ ] Smoke-check it runs: /test

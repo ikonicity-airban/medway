@@ -6,9 +6,6 @@
 ## Summary
 MedWay requires a modern full stack web architecture capable of running offline on student mobile devices across Nigerian university campuses. The platform combines a reactive client shell, deterministic edge routing logic, and real time database synchronization. This specification establishes the core technology stack and architecture topology.
 
-## Context
-Nigerian campus networks at the University of Nigeria Nsukka suffer from high packet loss and sudden data drops. Undergraduates seeking medical guidance cannot wait for sluggish server side round trips when evaluating urgent health questions. The architecture must run deterministic routing algorithms locally in under 5 milliseconds while supporting real time telemetry broadcasts across partner counters.
-
 ## Requirements
 - User story: As a sick student, I want to evaluate emergency danger signs and view facility routes instantly even when my mobile data connection drops.
 - User story: As a partner pharmacy attendant, I want my inventory and queue updates to sync reliably across the campus network without manual refresh.
@@ -16,25 +13,8 @@ Nigerian campus networks at the University of Nigeria Nsukka suffer from high pa
 - AC-2: All domain routing logic must execute locally in the client browser with zero network latency.
 - AC-3: Database updates from partner counters must broadcast to connected clients in under 500 milliseconds via real time subscriptions.
 
-## Options considered
-
-### Option 1: Next.js 15 App Router with TypeScript, Tailwind CSS v4, and Supabase
-- Pros: Server rendered shells for instant first paint; unified TypeScript codebase; edge API routes for secure operations; built in real time PostgreSQL subscriptions via Supabase.
-- Cons: Larger client bundle than a minimal static HTML file; requires managing hydration boundaries between offline service workers and server components.
-
-### Option 2: Single Page Application with Vite, React 19, and Firebase
-- Pros: Minimal tooling overhead; rapid hot module replacement during development.
-- Cons: No native edge API layer; vendor lock in to proprietary Firebase NoSQL document stores; slower initial cold loads over 2G networks without server prerendering.
-
-### Option 3: Monolithic Node.js with Express, EJS Templates, and SQLite
-- Pros: Simple deployment on a single virtual private server; zero cloud vendor dependencies.
-- Cons: Lacks client side reactivity; requires full page reloads on slow mobile networks; cannot run offline in browser service workers.
-
 ## Decision
-Chosen option: Option 1 (Next.js 15 App Router with TypeScript, Tailwind CSS v4, and Supabase). It delivers the optimal balance of offline client execution, strong typing across domain models, and managed real time database infrastructure.
-
-## Rationale
-Next.js 15 App Router provides static asset export and service worker caching through Workbox, satisfying the low bandwidth requirement in Context. TypeScript guarantees that critical medical safety invariants and non diagnostic boundaries are enforced at compile time. Supabase provides managed PostgreSQL with real time WebSockets for live telemetry synchronization.
+Chosen option: Next.js 15 App Router with TypeScript, Tailwind CSS v4, and Supabase. It delivers the optimal balance of offline client execution, strong typing across domain models, and managed real time database infrastructure.
 
 ## Proposed stack
 
