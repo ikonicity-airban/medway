@@ -13,9 +13,9 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 | 2 | Coding standards & tooling | Foundations | done |
 | 3 | Data model & local schema | Foundations | done |
 | 4 | Design system & UI foundation | Foundations | done |
-| 5 | Emergency red flag triage & hospital escalation | Slice 1 | planned |
+| 5 | Emergency red flag triage & hospital escalation | Slice 1 | done |
 | 6 | TISHIP routing & zero cost lock | Slice 2 | done |
-| 7 | Auto reroute engine & partner directory | Slice 3 | planned |
+| 7 | Auto reroute engine & partner directory | Slice 3 | done |
 | 8 | Student self advocacy intake pass | Slice 4 | planned |
 | 9 | Partner dashboard & counter check in telemetry | Slice 5 | planned |
 | 10 | Institutional population health telemetry feed | Slice 6 | planned |
@@ -72,12 +72,13 @@ Spec 0005 (docs/specs/0005-tiship-routing/index.md) · code in `src/features/rou
 - [x] Verify zero cost lock against simulated rushes: /check verify tiship routing
 - [x] Test scoring weights and budget invariants: /test tiship routing
 
-### 7. Auto reroute engine & partner directory · planned
+### 7. Auto reroute engine & partner directory · done
 Surface smart auto-reroute banners and promote accredited community pharmacies when clinic stockouts occur.
 **Done when:** marking UNN clinic antimalarials out of stock triggers an amber reroute banner and ranks Odim Gate Pharmacy first.
-- [ ] Implement auto reroute banner and score recalculation: /develop auto reroute
-- [ ] Verify reroute transitions and stock decay: /check verify auto reroute
-- [ ] Test edge case reroute permutations: /test auto reroute
+Spec 0006 (docs/specs/0006-auto-reroute/index.md) · code in `src/features/router/`
+- [x] Implement auto reroute banner and score recalculation: /develop auto reroute
+- [x] Verify reroute transitions and stock decay: /check verify auto reroute
+- [x] Test edge case reroute permutations: /test auto reroute
 
 ### 8. Student self advocacy intake pass · planned
 Generate a high contrast, privacy preserving intake slip (MW-UNN-XXX) with allergy alerts, QR code, and plain text clipboard copy.

@@ -61,21 +61,24 @@ export function rankFacilities(
     return [];
   }
 
+  const campusClinic = facilities.find((f) => f.isCampusClinic);
+  const clinicHasStock = campusClinic
+    ? Boolean(campusClinic.stock[prefs.category])
+    : true;
+
   const scored = facilities.map((facility) => {
     let score = calculateFacilityScore(facility, prefs);
-    let isAutoRerouted = false;
+    const isAutoRerouted = false;
     let rerouteReason: string | undefined;
 
     // TISHIP Hard Lock enforcement:
     // If student has zero budget, campus clinic is locked as top destination
-    // unless clinic is completely out of stock.
+    // only when the clinic actually has the requested item in stock.
     if (prefs.isZeroBudget && facility.isCampusClinic) {
-      const clinicStock = Boolean(facility.stock[prefs.category]);
-      if (clinicStock) {
+      if (clinicHasStock) {
         score += 1000; // Hard lock boost
       } else {
-        isAutoRerouted = true;
-        rerouteReason = "Campus clinic out of stock; emergency off-campus referral required";
+        rerouteReason = `Campus clinic out of stock for ${prefs.category}. Off campus referral required.`;
       }
     }
 
@@ -87,5 +90,17 @@ export function rankFacilities(
     };
   });
 
-  return scored.sort((a, b) => b.score - a.score);
+  const sorted = scored.sort((a, b) => b.score - a.score);
+
+  // If the campus clinic is out of stock, promote the highest scoring alternate facility
+  // and mark it as auto rerouted with an informative banner reason.
+  if (!clinicHasStock && sorted.length > 0) {
+    const topAlternative = sorted.find((item) => !item.facility.isCampusClinic);
+    if (topAlternative) {
+      topAlternative.isAutoRerouted = true;
+      topAlternative.rerouteReason = `Auto rerouted: UNN Medical Centre is out of ${prefs.category}. Recommended ${topAlternative.facility.name} with confirmed stock.`;
+    }
+  }
+
+  return sorted;
 }
