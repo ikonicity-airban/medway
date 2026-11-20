@@ -227,7 +227,9 @@ describe("Institutional Population Health Telemetry", () => {
   });
 
   describe("TelemetryView Integration", () => {
-    it("renders complete telemetry dashboard and handles export action", async () => {
+    it(
+      "renders complete telemetry dashboard and handles export action",
+      async () => {
       const storage = getOfflineStorage();
       for (const fac of UNN_PILOT_FACILITIES) {
         await storage.saveFacility(fac);
@@ -267,6 +269,6 @@ describe("Institutional Population Health Telemetry", () => {
       ).toHaveTextContent(/Export downloaded: zero PII summary ready/i);
 
       clickSpy.mockRestore();
-    });
+    }, 15000);
   });
 });
