@@ -103,20 +103,20 @@ export const RouterView: React.FC<RouterViewProps> = ({
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
-      {/* Top Navigation Tabs */}
-      <div className="flex items-center gap-2 border-b border-border pb-3" role="tablist">
+      {/* Sliding Segmented Tab Switcher (Coss UI pattern) */}
+      <div className="bg-surface-subtle p-1 rounded-xl border border-border inline-flex gap-1" role="tablist">
         <button
           type="button"
           role="tab"
           aria-selected={activeTab === "router"}
           onClick={() => setActiveTab("router")}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold min-h-[48px] transition-all ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold min-h-[48px] transition-all focus-visible:outline-2 ${
             activeTab === "router"
-              ? "bg-accent text-white shadow-sm"
-              : "text-muted hover:text-ink hover:bg-surface-subtle"
+              ? "bg-surface text-ink border border-border shadow-sm"
+              : "text-muted hover:text-ink hover:bg-surface/50"
           }`}
         >
-          <Compass className="w-4 h-4 shrink-0" />
+          <Compass className="w-4 h-4 shrink-0 text-muted" />
           <span>Care Router</span>
         </button>
 
@@ -125,13 +125,13 @@ export const RouterView: React.FC<RouterViewProps> = ({
           role="tab"
           aria-selected={activeTab === "directory"}
           onClick={() => setActiveTab("directory")}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold min-h-[48px] transition-all ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-bold min-h-[48px] transition-all focus-visible:outline-2 ${
             activeTab === "directory"
-              ? "bg-accent text-white shadow-sm"
-              : "text-muted hover:text-ink hover:bg-surface-subtle"
+              ? "bg-surface text-ink border border-border shadow-sm"
+              : "text-muted hover:text-ink hover:bg-surface/50"
           }`}
         >
-          <Building2 className="w-4 h-4 shrink-0" />
+          <Building2 className="w-4 h-4 shrink-0 text-muted" />
           <span>Partner Directory</span>
         </button>
       </div>
@@ -144,28 +144,34 @@ export const RouterView: React.FC<RouterViewProps> = ({
         />
       ) : (
         <div className="space-y-6">
-          {/* Care Category Selector */}
-          <section className="p-4 md:p-6 bg-surface border border-border rounded-lg shadow-sm">
-            <CategorySelector
-              selectedCategory={selectedCategory}
-              onSelectCategory={setSelectedCategory}
-            />
+          {/* Consolidated Triage Command Console Card */}
+          <section
+            aria-label="Triage preferences console"
+            className="bg-surface border border-border rounded-xl shadow-sm divide-y divide-border overflow-hidden"
+          >
+            {/* Step 1: Care Category */}
+            <div className="p-4 sm:p-6">
+              <CategorySelector
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+              />
+            </div>
+
+            {/* Step 2: Budget Gate */}
+            <div className="p-4 sm:p-6">
+              <BudgetGate value={budgetChoice} onChange={setBudgetChoice} />
+            </div>
+
+            {/* Step 3: Drug Allergy Declaration */}
+            <div className="p-4 sm:p-6">
+              <AllergySelector
+                value={declaredAllergies}
+                onChange={setDeclaredAllergies}
+              />
+            </div>
           </section>
 
-          {/* Budget Gate */}
-          <section className="p-4 md:p-6 bg-surface border border-border rounded-lg shadow-sm">
-            <BudgetGate value={budgetChoice} onChange={setBudgetChoice} />
-          </section>
-
-          {/* Drug Allergy Declaration */}
-          <section className="p-4 md:p-6 bg-surface border border-border rounded-lg shadow-sm">
-            <AllergySelector
-              value={declaredAllergies}
-              onChange={setDeclaredAllergies}
-            />
-          </section>
-
-          {/* Auto Reroute Banner if clinic is out of stock */}
+          {/* Dynamic Guidance: Auto Reroute Banner if clinic is out of stock */}
           {isClinicOutOfStock && (
             <AutoRerouteBanner
               category={selectedCategory}
@@ -174,57 +180,58 @@ export const RouterView: React.FC<RouterViewProps> = ({
             />
           )}
 
-          {/* TISHIP Hard Lock Notice (only when clinic is in stock) */}
+          {/* Dynamic Guidance: TISHIP Hard Lock Notice (only when clinic is in stock) */}
           {isZeroBudget && !isClinicOutOfStock && (
-            <div className="p-3.5 rounded-lg bg-success/10 border border-success flex items-center justify-between gap-3 text-xs text-body">
-              <div className="flex items-center gap-2">
-                <Lock className="w-4 h-4 text-success shrink-0" />
+            <div className="p-3.5 rounded-xl bg-surface border border-border flex items-center justify-between gap-3 text-xs text-body shadow-sm">
+              <div className="flex items-center gap-2.5">
+                <Lock className="w-4 h-4 text-ink shrink-0" />
                 <span>
-                  <strong>TISHIP Hard Lock Active:</strong> UNN Medical Centre is locked as
-                  the primary route for ₦0 student copay.
+                  <strong className="text-ink">TISHIP Hard Lock Active:</strong> UNN Medical Centre is prioritized as the primary destination for ₦0 student copay.
                 </span>
               </div>
-              <Badge variant="tiship">Covered</Badge>
+              <Badge variant="tiship">₦0 Covered</Badge>
             </div>
           )}
 
-          {/* Ranked Facilities Header */}
-          <div className="flex items-center justify-between pt-2">
-            <div>
-              <h2 className="text-lg font-bold text-ink">
-                Recommended Care Facilities
-              </h2>
-              <p className="text-xs text-muted">
-                Ranked by stock availability, queue length, and your budget preference.
-              </p>
+          {/* Ranked Facilities Section */}
+          <div className="space-y-3 pt-2">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-base sm:text-lg font-bold text-ink">
+                  Recommended Care Facilities
+                </h2>
+                <p className="text-xs text-muted">
+                  Ranked by live stock availability, queue congestion, and your budget preference.
+                </p>
+              </div>
+
+              <span className="text-xs font-mono font-medium text-muted bg-surface-subtle px-2.5 py-1 rounded border border-border">
+                {scoredFacilities.length} Options
+              </span>
             </div>
 
-            <span className="text-xs font-semibold text-muted">
-              {scoredFacilities.length} Options Found
-            </span>
-          </div>
+            {/* Facility List */}
+            <div className="space-y-3">
+              {scoredFacilities.map(({ facility, isAutoRerouted, rerouteReason }, index) => {
+                return (
+                  <div key={facility.id} className="space-y-2">
+                    {isAutoRerouted && (
+                      <div className="p-3 rounded-lg bg-surface border border-border text-xs text-body flex items-center gap-2 shadow-sm">
+                        <AlertCircle className="w-4 h-4 text-ink shrink-0" />
+                        <span>{rerouteReason}</span>
+                      </div>
+                    )}
 
-          {/* Facility List */}
-          <div className="space-y-4">
-            {scoredFacilities.map(({ facility, isAutoRerouted, rerouteReason }, index) => {
-              return (
-                <div key={facility.id} className="space-y-2">
-                  {isAutoRerouted && (
-                    <div className="p-3 rounded-md bg-warning/10 border border-warning text-xs text-body flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-warning shrink-0" />
-                      <span>{rerouteReason}</span>
-                    </div>
-                  )}
-
-                  <FacilityCard
-                    facility={facility}
-                    selectedCategory={selectedCategory}
-                    isRecommended={index === 0}
-                    onSelect={handleSelectFacility}
-                  />
-                </div>
-              );
-            })}
+                    <FacilityCard
+                      facility={facility}
+                      selectedCategory={selectedCategory}
+                      isRecommended={index === 0}
+                      onSelect={handleSelectFacility}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}

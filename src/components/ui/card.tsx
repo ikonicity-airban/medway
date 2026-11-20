@@ -11,8 +11,8 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ variant = "default", className = "", children, ...props }, ref) => {
     const variantClasses: Record<CardVariant, string> = {
       default: "bg-surface border-border",
-      subtle: "bg-surface-subtle border-border-subtle",
-      emergency: "bg-error/5 border-error",
+      subtle: "bg-surface-subtle border-border",
+      emergency: "bg-surface border-2 border-error",
     };
 
     return (

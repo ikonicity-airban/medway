@@ -199,10 +199,10 @@ export const QueueCongestionMeter: React.FC<QueueMeterProps> = ({
           {/* Metric Details */}
           <div className="grid grid-cols-3 gap-2.5 pt-2">
             <div className="p-2.5 rounded-lg border border-border bg-surface-subtle text-center">
-              <span className="block text-[11px] font-semibold text-emerald-700 dark:text-emerald-400">
+              <span className="block text-[11px] font-mono font-semibold text-muted uppercase tracking-wider">
                 Low (&lt;15m)
               </span>
-              <span className="text-lg font-bold text-ink font-mono">
+              <span className="text-lg font-bold text-ink font-mono tabular-nums">
                 {distribution.low}
               </span>
               <span className="block text-[10px] text-muted">
@@ -211,10 +211,10 @@ export const QueueCongestionMeter: React.FC<QueueMeterProps> = ({
             </div>
 
             <div className="p-2.5 rounded-lg border border-border bg-surface-subtle text-center">
-              <span className="block text-[11px] font-semibold text-amber-700 dark:text-amber-400">
+              <span className="block text-[11px] font-mono font-semibold text-muted uppercase tracking-wider">
                 Moderate (15-45m)
               </span>
-              <span className="text-lg font-bold text-ink font-mono">
+              <span className="text-lg font-bold text-ink font-mono tabular-nums">
                 {distribution.moderate}
               </span>
               <span className="block text-[10px] text-muted">
@@ -223,10 +223,10 @@ export const QueueCongestionMeter: React.FC<QueueMeterProps> = ({
             </div>
 
             <div className="p-2.5 rounded-lg border border-border bg-surface-subtle text-center">
-              <span className="block text-[11px] font-semibold text-rose-700 dark:text-rose-400">
+              <span className="block text-[11px] font-mono font-semibold text-muted uppercase tracking-wider">
                 High (&gt;45m)
               </span>
-              <span className="text-lg font-bold text-ink font-mono">
+              <span className="text-lg font-bold text-ink font-mono tabular-nums">
                 {distribution.high}
               </span>
               <span className="block text-[10px] text-muted">
@@ -290,16 +290,16 @@ export const FacilityStatusMatrix: React.FC<FacilityMatrixProps> = ({
 
                 <div className="flex items-center gap-2 flex-wrap">
                   {hasStockout ? (
-                    <div className="flex items-center gap-1.5 text-xs text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 px-2.5 py-1.5 rounded-md">
-                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-                      <span className="font-medium">
+                    <div className="flex items-center gap-1.5 text-xs text-ink bg-surface-subtle border border-border px-2.5 py-1.5 rounded-md">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0 text-muted" />
+                      <span className="font-medium font-mono">
                         {fac.outOfStockCount} Stockout{fac.outOfStockCount > 1 ? "s" : ""}
                       </span>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1.5 rounded-md">
-                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                      <span className="font-medium">All 4 In Stock</span>
+                    <div className="flex items-center gap-1.5 text-xs text-ink bg-surface-subtle border border-border px-2.5 py-1.5 rounded-md">
+                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-muted" />
+                      <span className="font-medium font-mono">All 4 In Stock</span>
                     </div>
                   )}
                 </div>

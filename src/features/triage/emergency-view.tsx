@@ -152,8 +152,8 @@ export const EmergencyView: React.FC<EmergencyViewProps> = ({
               wound debridement, and ambulance transfer.
             </p>
 
-            <div className="p-3 rounded-md bg-surface-subtle border border-border-subtle flex items-start gap-2 text-xs text-muted">
-              <Compass className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+            <div className="p-3 rounded-md bg-surface-subtle border border-border flex items-start gap-2 text-xs text-muted">
+              <Compass className="w-4 h-4 shrink-0 mt-0.5 text-muted" />
               <span>
                 <strong>Transport Guide:</strong> From Franco, Okeke, or Balewa hostels, walk 3 to 5 minutes toward the central library.
                 From Hilltop or Odim gate, take a campus shuttle tricycle directly to Medical Centre gate.
@@ -213,7 +213,7 @@ export const EmergencyView: React.FC<EmergencyViewProps> = ({
 
       {/* Safety Notice */}
       <div className="p-4 rounded-lg bg-surface-subtle border border-border text-xs text-muted flex items-start gap-2.5">
-        <AlertTriangle className="w-4 h-4 text-warning shrink-0 mt-0.5" />
+        <AlertTriangle className="w-4 h-4 text-muted shrink-0 mt-0.5" />
         <div className="space-y-1">
           <span className="font-bold text-ink block">
             Institutional Ambulance & Hostel Transport Advisory

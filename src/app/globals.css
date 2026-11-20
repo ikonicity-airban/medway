@@ -40,8 +40,8 @@
   --radius-lg: 0.75rem;
   --radius-full: 9999px;
 
-  --transition-fast: 100ms ease-out;
-  --transition-normal: 200ms ease-out;
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,6 +72,10 @@
 
 :root {
   --min-touch-target: 48px;
+  --font-fluid-display: clamp(2rem, 1.171rem + 3.536vw, 3.5rem);
+  --font-fluid-h1: clamp(1.5rem, 1.086rem + 1.768vw, 2.25rem);
+  --font-fluid-h2: clamp(1.25rem, 0.991rem + 1.105vw, 1.75rem);
+  --font-fluid-body: clamp(0.938rem, 0.886rem + 0.221vw, 1.063rem);
 }
 
 body {
@@ -82,6 +86,37 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum", "zero";
+}
+
+/* Typographic Mastery utilities */
+.text-fluid-h1 {
+  font-size: var(--font-fluid-h1);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.text-fluid-h2 {
+  font-size: var(--font-fluid-h2);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.text-fluid-body {
+  font-size: var(--font-fluid-body);
+  line-height: 1.6;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Enforce accessible 2px visible focus ring */
@@ -93,4 +128,9 @@ body {
 /* Standing design ban: animate-pulse is prohibited */
 .animate-pulse {
   animation: none !important;
+}
+
+/* Smooth layout transitions for tabs and interactive elements */
+.smooth-tab-transition {
+  transition: all var(--transition-normal);
 }

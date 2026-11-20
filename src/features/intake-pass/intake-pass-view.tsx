@@ -117,28 +117,18 @@ export const IntakePassView: React.FC<IntakePassViewProps> = ({
           </div>
 
           {/* Allergy Alert Box */}
-          <div
-            className={`p-4 rounded-lg border-2 ${
-              hasAllergies
-                ? "bg-warning/15 border-warning text-ink"
-                : "bg-surface-subtle border-border-subtle text-body"
-            }`}
-          >
+          <div className="p-4 rounded-lg border border-border bg-surface-subtle text-ink">
             <div className="flex items-start gap-3">
-              {hasAllergies ? (
-                <ShieldAlert className="w-5 h-5 text-warning shrink-0 mt-0.5" />
-              ) : (
-                <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
-              )}
+              <ShieldAlert className="w-5 h-5 text-ink shrink-0 mt-0.5" />
               <div className="space-y-0.5 flex-1">
-                <span className="text-xs font-bold uppercase tracking-wider block">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider block text-muted">
                   Declared Drug Allergies
                 </span>
                 <span className="text-sm font-bold text-ink block">
                   {pass.allergies}
                 </span>
                 {hasAllergies ? (
-                  <p className="text-xs text-ink/80 mt-1 font-medium">
+                  <p className="text-xs text-muted mt-1 font-medium">
                     Critical: Present this alert to the attendant prior to drug dispensing.
                   </p>
                 ) : (

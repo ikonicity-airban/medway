@@ -16,19 +16,19 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
     { icon: React.ReactNode; subtitle: string }
   > = {
     "Antimalarials (ACT)": {
-      icon: <Pill className="w-5 h-5 text-accent" />,
+      icon: <Pill className="w-5 h-5" />,
       subtitle: "ACT, Artemether / Lumefantrine",
     },
     "Analgesics & Fever": {
-      icon: <Thermometer className="w-5 h-5 text-warning" />,
+      icon: <Thermometer className="w-5 h-5" />,
       subtitle: "Paracetamol, Pain & Fever Relief",
     },
     "Typhoid / Lab Test": {
-      icon: <Activity className="w-5 h-5 text-error" />,
+      icon: <Activity className="w-5 h-5" />,
       subtitle: "Widal, Malaria RDT, Blood Screen",
     },
     "ORS & Hydration": {
-      icon: <Droplets className="w-5 h-5 text-success" />,
+      icon: <Droplets className="w-5 h-5" />,
       subtitle: "Oral Rehydration Salts, Zinc",
     },
   };
@@ -36,10 +36,10 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-bold text-ink">
-          Select Required Care Category
+        <label className="text-xs font-mono font-semibold uppercase tracking-wider text-muted">
+          1. Select Care Category
         </label>
-        <span className="text-xs text-muted">Non Diagnostic Logistics</span>
+        <span className="text-xs text-muted font-mono">Non Diagnostic Logistics</span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -54,12 +54,18 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
               onClick={() => onSelectCategory(category)}
               className={`flex items-start justify-between p-3.5 rounded-lg border text-left min-h-[56px] transition-all focus-visible:outline-2 focus-visible:outline-offset-2 ${
                 isSelected
-                  ? "bg-surface border-2 border-accent ring-1 ring-accent/30 shadow-sm"
-                  : "bg-surface border-border hover:border-muted active:bg-surface-subtle"
+                  ? "bg-surface-subtle border-2 border-accent text-ink shadow-sm"
+                  : "bg-surface border-border text-body hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
               }`}
             >
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 shrink-0">{meta.icon}</div>
+                <div
+                  className={`mt-0.5 shrink-0 ${
+                    isSelected ? "text-accent" : "text-muted"
+                  }`}
+                >
+                  {meta.icon}
+                </div>
                 <div>
                   <span className="text-sm font-bold text-ink block leading-snug">
                     {category}

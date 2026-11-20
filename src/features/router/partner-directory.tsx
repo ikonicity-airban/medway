@@ -57,7 +57,7 @@ export const PartnerDirectory: React.FC<PartnerDirectoryProps> = ({
         </div>
 
         <div className="flex items-center gap-1.5 text-xs text-muted">
-          <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
+          <ShieldCheck className="w-4 h-4 text-muted shrink-0" />
           <span>Field verified within 4 hours</span>
         </div>
       </div>

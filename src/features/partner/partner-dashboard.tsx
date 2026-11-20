@@ -8,7 +8,7 @@ import { getOfflineStorage } from "@/lib/offline-db";
 import { syncChannel } from "@/lib/sync-channel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Building2, LogOut, RefreshCw } from "lucide-react";
+import { Building2, CheckCircle2, LogOut } from "lucide-react";
 
 export interface PartnerDashboardProps {
   initialFacility?: Facility;
@@ -95,13 +95,13 @@ export const PartnerDashboard: React.FC<PartnerDashboardProps> = ({
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       {/* Facility Header Bar */}
-      <div className="p-4 md:p-6 rounded-xl bg-surface border-2 border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+      <div className="p-4 md:p-6 rounded-xl bg-surface border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-            <Building2 className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-lg bg-surface-subtle border border-border flex items-center justify-center text-muted shrink-0">
+            <Building2 className="w-5 h-5 text-ink" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <h1 className="text-lg md:text-xl font-bold text-ink">
                 {activeFacility.name}
               </h1>
@@ -123,7 +123,7 @@ export const PartnerDashboard: React.FC<PartnerDashboardProps> = ({
           onClick={handleSignOut}
           className="self-start sm:self-auto gap-1.5 min-h-[48px]"
         >
-          <LogOut className="w-4 h-4" />
+          <LogOut className="w-4 h-4 text-muted" />
           <span>Sign Out</span>
         </Button>
       </div>
@@ -132,37 +132,40 @@ export const PartnerDashboard: React.FC<PartnerDashboardProps> = ({
       {syncStatus && (
         <div
           role="status"
-          className="p-3 rounded-lg bg-accent/10 border border-accent text-accent text-xs font-bold flex items-center gap-2 animate-in fade-in"
+          className="p-3.5 rounded-xl bg-surface border border-border text-ink text-xs font-semibold flex items-center gap-2 shadow-sm animate-in fade-in"
         >
-          <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+          <CheckCircle2 className="w-4 h-4 text-muted shrink-0" />
           <span>{syncStatus}</span>
         </div>
       )}
 
-      {/* 1. Essential Care Inventory Controls */}
-      <section className="p-4 md:p-6 rounded-xl bg-surface border border-border shadow-xs">
-        <InventoryToggles
-          stock={activeFacility.stock}
-          onToggle={handleToggleStock}
-        />
-      </section>
+      {/* Consolidated Console Surface */}
+      <div className="bg-surface border border-border rounded-xl shadow-sm divide-y divide-border overflow-hidden">
+        {/* 1. Essential Care Inventory Controls */}
+        <section className="p-4 md:p-6">
+          <InventoryToggles
+            stock={activeFacility.stock}
+            onToggle={handleToggleStock}
+          />
+        </section>
 
-      {/* 2. Queue Level Selector */}
-      <section className="p-4 md:p-6 rounded-xl bg-surface border border-border shadow-xs">
-        <QueueSelector
-          currentQueue={activeFacility.currentQueue}
-          lastUpdated={activeFacility.lastQueueUpdate}
-          onSelectQueue={handleSelectQueue}
-        />
-      </section>
+        {/* 2. Queue Level Selector */}
+        <section className="p-4 md:p-6">
+          <QueueSelector
+            currentQueue={activeFacility.currentQueue}
+            lastUpdated={activeFacility.lastQueueUpdate}
+            onSelectQueue={handleSelectQueue}
+          />
+        </section>
 
-      {/* 3. Counter Token Scanner */}
-      <section className="p-4 md:p-6 rounded-xl bg-surface border border-border shadow-xs">
-        <TokenScanner
-          facilityId={activeFacility.id}
-          facilityName={activeFacility.name}
-        />
-      </section>
+        {/* 3. Counter Token Scanner */}
+        <section className="p-4 md:p-6">
+          <TokenScanner
+            facilityId={activeFacility.id}
+            facilityName={activeFacility.name}
+          />
+        </section>
+      </div>
     </div>
   );
 };

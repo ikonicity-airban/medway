@@ -58,8 +58,8 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
     <Card
       className={`transition-all ${
         isRecommended
-          ? "border-2 border-accent ring-1 ring-accent/20"
-          : "border-border hover:border-muted"
+          ? "border-2 border-accent shadow-sm"
+          : "border-border hover:border-muted hover:shadow-xs"
       }`}
     >
       <CardHeader>
@@ -97,7 +97,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
           </div>
 
           <div className="shrink-0 text-right">
-            <span className="text-base font-bold text-ink block">
+            <span className="text-base font-bold text-ink block font-mono tabular-nums">
               {facility.priceLabel}
             </span>
           </div>
@@ -108,8 +108,8 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
         <div className="flex flex-wrap items-center gap-4 text-sm text-body mb-4">
           <div className="flex items-center gap-1.5">
             <MapPin className="w-4 h-4 text-muted shrink-0" />
-            <span>
-              {facility.distanceMeters}m from campus ({walkingMinutes} min walk)
+            <span className="text-xs sm:text-sm">
+              <strong className="font-mono tabular-nums text-ink">{facility.distanceMeters}m</strong> from campus (<span className="font-mono tabular-nums">{walkingMinutes} min</span> walk)
             </span>
           </div>
 
@@ -121,19 +121,19 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
 
         {/* Stock status for the requested category */}
         {selectedCategory && (
-          <div className="p-3 rounded-md bg-surface-subtle border border-border-subtle flex items-center justify-between">
-            <span className="text-xs font-semibold text-muted uppercase tracking-wider">
+          <div className="p-3 rounded-lg bg-surface-subtle border border-border flex items-center justify-between">
+            <span className="text-xs font-mono font-semibold text-muted uppercase tracking-wider">
               {selectedCategory}
             </span>
             {isCategoryInStock ? (
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-success">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-success font-mono">
                 <CheckCircle2 className="w-4 h-4" />
                 In Stock
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-error">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-error font-mono">
                 <XCircle className="w-4 h-4" />
-                Stockout (Check Alternative)
+                Stockout
               </span>
             )}
           </div>
@@ -152,7 +152,7 @@ export const FacilityCard: React.FC<FacilityCardProps> = ({
             variant={facility.isCampusClinic ? "primary" : "secondary"}
             size="default"
             onClick={handleAction}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 min-h-[48px]"
           >
             <span>{buttonText}</span>
             <ArrowRight className="w-4 h-4" />

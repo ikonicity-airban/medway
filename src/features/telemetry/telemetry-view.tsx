@@ -127,52 +127,52 @@ export const TelemetryView: React.FC = () => {
 
       {/* Top 4 KPI Metric Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <Card className="bg-surface">
+        <Card className="bg-surface border border-border">
           <CardContent className="p-4 space-y-1">
             <div className="flex items-center justify-between text-muted text-xs">
               <span className="font-medium">Total Inquiries</span>
-              <Users className="w-4 h-4 text-accent" />
+              <Users className="w-4 h-4 text-muted" />
             </div>
-            <div className="text-2xl font-bold font-mono text-ink">
+            <div className="text-2xl font-bold font-mono tabular-nums text-ink">
               {telemetry.totalInquiries}
             </div>
             <p className="text-[11px] text-muted">24h routing volume</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-surface">
+        <Card className="bg-surface border border-border">
           <CardContent className="p-4 space-y-1">
             <div className="flex items-center justify-between text-muted text-xs">
               <span className="font-medium">TISHIP Coverage</span>
-              <TrendingUp className="w-4 h-4 text-emerald-600" />
+              <TrendingUp className="w-4 h-4 text-muted" />
             </div>
-            <div className="text-2xl font-bold font-mono text-emerald-700 dark:text-emerald-400">
+            <div className="text-2xl font-bold font-mono tabular-nums text-ink">
               {telemetry.tishipCoveragePercentage}%
             </div>
             <p className="text-[11px] text-muted">₦0 care eligibility</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-surface">
+        <Card className="bg-surface border border-border">
           <CardContent className="p-4 space-y-1">
             <div className="flex items-center justify-between text-muted text-xs">
               <span className="font-medium">Active Stockouts</span>
-              <AlertTriangle className="w-4 h-4 text-amber-600" />
+              <AlertTriangle className="w-4 h-4 text-muted" />
             </div>
-            <div className="text-2xl font-bold font-mono text-amber-700 dark:text-amber-400">
+            <div className="text-2xl font-bold font-mono tabular-nums text-ink">
               {telemetry.totalStockouts}
             </div>
             <p className="text-[11px] text-muted">Across 4 counters</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-surface">
+        <Card className="bg-surface border border-border">
           <CardContent className="p-4 space-y-1">
             <div className="flex items-center justify-between text-muted text-xs">
               <span className="font-medium">Avg Clinic Wait</span>
-              <Activity className="w-4 h-4 text-accent" />
+              <Activity className="w-4 h-4 text-muted" />
             </div>
-            <div className="text-2xl font-bold font-mono text-ink">
+            <div className="text-2xl font-bold font-mono tabular-nums text-ink">
               ~{telemetry.queueDistribution.averageWaitMinutes}m
             </div>
             <p className="text-[11px] text-muted">Estimated queue time</p>
@@ -223,9 +223,9 @@ export const TelemetryView: React.FC = () => {
       {exportNotice && (
         <div
           role="status"
-          className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-semibold flex items-center gap-2 animate-in fade-in"
+          className="p-3.5 rounded-xl bg-surface border border-border text-ink text-xs font-semibold flex items-center gap-2 shadow-sm animate-in fade-in"
         >
-          <CheckCircle2 className="w-4 h-4 shrink-0" />
+          <CheckCircle2 className="w-4 h-4 shrink-0 text-muted" />
           <span>{exportNotice}</span>
         </div>
       )}

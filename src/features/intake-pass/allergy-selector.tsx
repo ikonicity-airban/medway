@@ -43,10 +43,10 @@ export const AllergySelector: React.FC<AllergySelectorProps> = ({
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-bold text-ink">
-          Declared Drug Allergies
+        <label className="text-xs font-mono font-semibold uppercase tracking-wider text-muted">
+          3. Declared Drug Allergies
         </label>
-        <span className="text-xs text-muted">Self Advocacy Record</span>
+        <span className="text-xs text-muted font-mono">Self Advocacy Record</span>
       </div>
 
       {/* Quick selection chips */}
@@ -62,10 +62,10 @@ export const AllergySelector: React.FC<AllergySelectorProps> = ({
               type="button"
               onClick={() => handleChipClick(item)}
               aria-pressed={isSelected}
-              className={`px-3 py-2 text-xs font-semibold rounded-lg border min-h-[48px] transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-2 text-xs font-semibold rounded-lg border min-h-[48px] transition-all flex items-center gap-1.5 focus-visible:outline-2 ${
                 isSelected
-                  ? "bg-accent text-white border-accent shadow-sm"
-                  : "bg-surface border-border text-ink hover:border-muted active:bg-surface-subtle"
+                  ? "bg-accent text-on-accent border-accent shadow-sm"
+                  : "bg-surface border-border text-ink hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
               }`}
             >
               <span>{item}</span>
@@ -87,10 +87,10 @@ export const AllergySelector: React.FC<AllergySelectorProps> = ({
 
       {/* Warning context */}
       {!isNone && (
-        <div className="p-2.5 rounded-md bg-warning/10 border border-warning text-xs text-body flex items-start gap-2">
-          <ShieldAlert className="w-4 h-4 text-warning shrink-0 mt-0.5" />
-          <span>
-            This allergy will be highlighted in bold amber on your intake slip so the dispenser verifies safe formulations.
+        <div className="p-3 rounded-lg bg-surface-subtle border border-border text-xs text-body flex items-start gap-2">
+          <ShieldAlert className="w-4 h-4 text-ink shrink-0 mt-0.5" />
+          <span className="leading-relaxed">
+            This allergy will be highlighted in bold amber on your intake slip so the dispenser verifies safe formulations before dispensing.
           </span>
         </div>
       )}

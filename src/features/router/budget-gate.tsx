@@ -12,10 +12,10 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-bold text-ink">
+        <label className="text-xs font-mono font-semibold uppercase tracking-wider text-muted">
           Student Budget & Insurance Gate
         </label>
-        <span className="text-xs text-muted">TISHIP Hard Lock Active</span>
+        <span className="text-xs text-muted font-mono">TISHIP Hard Lock Active</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3" role="radiogroup">
@@ -23,8 +23,8 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
         <label
           className={`flex items-start gap-3 p-4 rounded-lg border cursor-pointer min-h-[56px] transition-all select-none ${
             value === "tiship"
-              ? "bg-surface border-2 border-success ring-1 ring-success/30 shadow-sm"
-              : "bg-surface border-border hover:border-muted active:bg-surface-subtle"
+              ? "bg-surface-subtle border-2 border-accent shadow-sm"
+              : "bg-surface border-border hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
           }`}
         >
           <input
@@ -33,7 +33,7 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
             value="tiship"
             checked={value === "tiship"}
             onChange={() => onChange("tiship")}
-            className="w-5 h-5 mt-0.5 rounded-full border-border text-success focus:ring-success"
+            className="w-5 h-5 mt-0.5 rounded-full border-border text-accent focus:ring-accent"
           />
 
           <div className="space-y-1">
@@ -54,8 +54,8 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
         <label
           className={`flex items-start gap-3 p-4 rounded-lg border cursor-pointer min-h-[56px] transition-all select-none ${
             value === "fast"
-              ? "bg-surface border-2 border-accent ring-1 ring-accent/30 shadow-sm"
-              : "bg-surface border-border hover:border-muted active:bg-surface-subtle"
+              ? "bg-surface-subtle border-2 border-accent shadow-sm"
+              : "bg-surface border-border hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
           }`}
         >
           <input
@@ -75,7 +75,7 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
               <Badge variant="neutral">Off Campus</Badge>
             </div>
             <p className="text-xs text-muted leading-relaxed">
-              Paid retail care (₦1,000 - ₦3,500) for short queues at accredited PCN
+              Paid retail care (<span className="tabular-nums">₦1,000 - ₦3,500</span>) for short queues at accredited PCN
               pharmacies near Odim, Hilltop, or Ogige gates.
             </p>
           </div>
