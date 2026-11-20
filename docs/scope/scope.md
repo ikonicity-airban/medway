@@ -88,12 +88,13 @@ Spec 0007 (docs/specs/0007-intake-pass/index.md) · code in `src/features/intake
 - [x] Verify clipboard export and high contrast legibility: /check verify intake pass
 - [x] Test intake data serialization and allergy invariants: /test intake pass
 
-### 9. Partner dashboard & counter check in telemetry · planned
+### 9. Partner dashboard & counter check in telemetry · done
 Provide an authenticated portal for PCN verified pharmacies to toggle stock, update queue levels, and scan student counter tokens.
 **Done when:** partner attendants toggle category stock and see updates broadcast in real time across active student sessions.
-- [ ] Build partner portal and token verification scanner: /develop partner dashboard
-- [ ] Verify cross tab realtime synchronization: /check verify partner dashboard
-- [ ] Test PIN authentication and token redemption: /test partner dashboard
+Spec 0008 (docs/specs/0008-partner-dashboard/index.md) · code in `src/features/partner/` and `src/app/partner/`
+- [x] Build partner portal and token verification scanner: /develop partner dashboard
+- [x] Verify cross tab realtime synchronization: /check verify partner dashboard
+- [x] Test PIN authentication and token redemption: /test partner dashboard
 
 ### 10. Institutional population health telemetry feed · planned
 Aggregate anonymized symptom searches, stockout triggers, and clinic queue loads for university health administration and HMO partners.

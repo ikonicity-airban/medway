@@ -70,7 +70,13 @@ class MemoryStorageAdapter implements OfflineStorageAdapter {
   }
 
   async getCrowdTokenByCode(tokenCode: string): Promise<CrowdToken | null> {
-    return this.crowdTokens.get(tokenCode) ?? null;
+    const direct = this.crowdTokens.get(tokenCode);
+    if (direct) return direct;
+    const lower = tokenCode.toLowerCase();
+    for (const [key, val] of this.crowdTokens.entries()) {
+      if (key.toLowerCase() === lower) return val;
+    }
+    return null;
   }
 
   async clear(): Promise<void> {

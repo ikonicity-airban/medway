@@ -9,6 +9,7 @@ import { BudgetChoice, BudgetGate } from "./budget-gate";
 import { rankFacilities, RoutingPreferences } from "@/lib/routing-engine";
 import { createIntakePass } from "@/lib/intake-pass";
 import { getOfflineStorage, seedInitialData } from "@/lib/offline-db";
+import { syncChannel } from "@/lib/sync-channel";
 import { CareCategory, Facility, IntakePass, UNN_PILOT_FACILITIES } from "@/types";
 import { AutoRerouteBanner } from "./auto-reroute-banner";
 import { PartnerDirectory } from "./partner-directory";
@@ -47,6 +48,12 @@ export const RouterView: React.FC<RouterViewProps> = ({
       }
     }
     loadData();
+
+    const unsubscribe = syncChannel.subscribe(() => {
+      loadData();
+    });
+
+    return unsubscribe;
   }, []);
 
   const isZeroBudget = budgetChoice === "tiship";
