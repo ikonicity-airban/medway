@@ -11,7 +11,7 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 |---|---|---|---|
 | 1 | Stack & architecture | Foundations | done |
 | 2 | Coding standards & tooling | Foundations | done |
-| 3 | Data model & local schema | Foundations | planned |
+| 3 | Data model & local schema | Foundations | done |
 | 4 | Design system & UI foundation | Foundations | planned |
 | 5 | Emergency red flag triage & hospital escalation | Slice 1 | planned |
 | 6 | TISHIP routing & zero cost lock | Slice 2 | planned |
@@ -37,13 +37,13 @@ Establish formatting, linting, pre-commit hooks, and Vitest test runner configur
 - [x] Install the tooling: /develop tooling
 - [x] Check it runs clean: /test
 
-### 3. Data model & local schema · planned
+### 3. Data model & local schema · done
 Implement TypeScript domain models, Zod validation schemas, IndexedDB offline tables, and Supabase PostgreSQL schema migrations.
 **Done when:** core entities for facilities, inventory records, intake passes, and crowd tokens validate strictly with 100% test coverage.
 Spec 0002 · code in `src/types/` and `supabase/migrations/`
 - [x] Design the data model (spec): /architect data model
-- [ ] Implement domain types and Zod schemas: /develop data model
-- [ ] Verify database migrations and schema checks: /test
+- [x] Implement domain types and Zod schemas: /develop data model
+- [x] Verify database migrations and schema checks: /test
 
 ### 4. Design system & UI foundation · planned
 Implement the clinical slate design tokens, base typography, accessible focus styles, and reusable card containers.
