@@ -12,7 +12,7 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 | 1 | Stack & architecture | Foundations | done |
 | 2 | Coding standards & tooling | Foundations | done |
 | 3 | Data model & local schema | Foundations | done |
-| 4 | Design system & UI foundation | Foundations | planned |
+| 4 | Design system & UI foundation | Foundations | in-progress |
 | 5 | Emergency red flag triage & hospital escalation | Slice 1 | planned |
 | 6 | TISHIP routing & zero cost lock | Slice 2 | planned |
 | 7 | Auto reroute engine & partner directory | Slice 3 | planned |
@@ -45,13 +45,13 @@ Spec 0002 · code in `src/types/` and `supabase/migrations/`
 - [x] Implement domain types and Zod schemas: /develop data model
 - [x] Verify database migrations and schema checks: /test
 
-### 4. Design system & UI foundation · planned
+### 4. Design system & UI foundation · done
 Implement the clinical slate design tokens, base typography, accessible focus styles, and reusable card containers.
 **Done when:** theme tokens load in Tailwind v4 and all base elements meet WCAG AA 4.5:1 contrast ratios in light and dark modes.
 Spec 0003 · code in `src/components/ui/`
 - [x] Design the design system (spec): /architect design system
-- [ ] Implement base tokens and accessible primitives: /develop design system
-- [ ] Audit contrast and keyboard navigation: /test
+- [x] Implement base tokens and accessible primitives: /develop design system
+- [x] Audit contrast and keyboard navigation: /test
 
 ## Slices
 

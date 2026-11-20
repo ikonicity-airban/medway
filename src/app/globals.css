@@ -3,11 +3,14 @@
 @theme {
   --color-canvas: #f8fafc;
   --color-surface: #ffffff;
-  --color-border: #64748b;
-  --color-muted: #64748b;
-  --color-body: #334155;
+  --color-surface-subtle: #f1f5f9;
+  --color-border: #cbd5e1;
+  --color-border-subtle: #e2e8f0;
+  --color-muted: #475569;
+  --color-body: #1e293b;
   --color-ink: #0f172a;
-  --color-accent: #0369a1;
+
+  --color-accent: #0284c7;
   --color-on-accent: #ffffff;
   --color-success: #047857;
   --color-on-success: #ffffff;
@@ -16,7 +19,12 @@
   --color-error: #b91c1c;
   --color-on-error: #ffffff;
 
+  --color-queue-low: #047857;
+  --color-queue-moderate: #b45309;
+  --color-queue-high: #b91c1c;
+
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --text-xs: 0.75rem;
@@ -30,33 +38,59 @@
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
+  --radius-full: 9999px;
 
-  --transition-fast: 80ms ease-out;
-  --transition-normal: 160ms ease-out;
-  --transition-slow: 240ms ease-out;
+  --transition-fast: 100ms ease-out;
+  --transition-normal: 200ms ease-out;
 }
 
 @media (prefers-color-scheme: dark) {
   @theme {
-    --color-canvas: #0f172a;
-    --color-surface: #1e293b;
-    --color-border: #64748b;
+    --color-canvas: #090d16;
+    --color-surface: #0f172a;
+    --color-surface-subtle: #1e293b;
+    --color-border: #334155;
+    --color-border-subtle: #1e293b;
     --color-muted: #94a3b8;
-    --color-body: #cbd5e1;
+    --color-body: #e2e8f0;
     --color-ink: #f8fafc;
-    --color-accent: #7dd3fc;
+
+    --color-accent: #38bdf8;
     --color-on-accent: #082f49;
-    --color-success: #6ee7b7;
-    --color-on-success: #064e3b;
-    --color-warning: #fcd34d;
-    --color-on-warning: #78350f;
-    --color-error: #fca5a5;
+    --color-success: #34d399;
+    --color-on-success: #022c22;
+    --color-warning: #fbbf24;
+    --color-on-warning: #451a03;
+    --color-error: #f87171;
     --color-on-error: #450a0a;
+
+    --color-queue-low: #34d399;
+    --color-queue-moderate: #fbbf24;
+    --color-queue-high: #f87171;
   }
+}
+
+:root {
+  --min-touch-target: 48px;
 }
 
 body {
   background-color: var(--color-canvas);
   color: var(--color-body);
   font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Enforce accessible 2px visible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Standing design ban: animate-pulse is prohibited */
+.animate-pulse {
+  animation: none !important;
 }
