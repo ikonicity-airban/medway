@@ -96,12 +96,13 @@ Spec 0008 (docs/specs/0008-partner-dashboard/index.md) · code in `src/features/
 - [x] Verify cross tab realtime synchronization: /check verify partner dashboard
 - [x] Test PIN authentication and token redemption: /test partner dashboard
 
-### 10. Institutional population health telemetry feed · planned
+### 10. Institutional population health telemetry feed · done
 Aggregate anonymized symptom searches, stockout triggers, and clinic queue loads for university health administration and HMO partners.
 **Done when:** telemetry charts display aggregated daily search volumes and stockout events without exposing student identity.
-- [ ] Build analytics aggregation pipeline: /develop institutional telemetry
-- [ ] Verify anonymization and zero PII leakage: /check verify institutional telemetry
-- [ ] Test telemetry aggregation math: /test institutional telemetry
+Spec 0009 (docs/specs/0009-institutional-telemetry/index.md) · code in `src/features/telemetry/` and `src/app/telemetry/`
+- [x] Build analytics aggregation pipeline: /develop institutional telemetry
+- [x] Verify anonymization and zero PII leakage: /check verify institutional telemetry
+- [x] Test telemetry aggregation math: /test institutional telemetry
 
 ## Deferred
 

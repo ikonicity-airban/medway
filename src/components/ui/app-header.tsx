@@ -29,10 +29,32 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
             <span>MedWay</span>
           </Link>
 
-          <Badge variant="neutral" className="hidden sm:inline-flex">
+          <Badge variant="neutral" className="hidden lg:inline-flex">
             UNN Nsukka
           </Badge>
         </div>
+
+        {/* Navigation Links */}
+        <nav className="hidden sm:flex items-center gap-1 text-xs font-semibold text-muted">
+          <Link
+            href="/"
+            className="px-2.5 py-1.5 rounded-md hover:text-ink hover:bg-surface-subtle transition-colors focus-visible:outline-2"
+          >
+            Router
+          </Link>
+          <Link
+            href="/partner"
+            className="px-2.5 py-1.5 rounded-md hover:text-ink hover:bg-surface-subtle transition-colors focus-visible:outline-2"
+          >
+            Partner
+          </Link>
+          <Link
+            href="/telemetry"
+            className="px-2.5 py-1.5 rounded-md hover:text-ink hover:bg-surface-subtle transition-colors focus-visible:outline-2"
+          >
+            Telemetry
+          </Link>
+        </nav>
 
         {/* Status Indicators and Emergency Dialer */}
         <div className="flex items-center gap-2.5">
