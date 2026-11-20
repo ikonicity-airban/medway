@@ -14,7 +14,7 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 | 3 | Data model & local schema | Foundations | done |
 | 4 | Design system & UI foundation | Foundations | done |
 | 5 | Emergency red flag triage & hospital escalation | Slice 1 | planned |
-| 6 | TISHIP routing & zero cost lock | Slice 2 | planned |
+| 6 | TISHIP routing & zero cost lock | Slice 2 | done |
 | 7 | Auto reroute engine & partner directory | Slice 3 | planned |
 | 8 | Student self advocacy intake pass | Slice 4 | planned |
 | 9 | Partner dashboard & counter check in telemetry | Slice 5 | planned |
@@ -64,12 +64,13 @@ Spec 0004 · code in `src/features/triage/`
 - [x] Verify safety lockout behavior: /check verify emergency triage
 - [x] Test deterministic checklist logic: /test emergency triage
 
-### 6. TISHIP routing & zero cost lock · planned
+### 6. TISHIP routing & zero cost lock · done
 Implement the facility ranking engine with the TISHIP Hard Lock enforcing that students with ₦0 budget are never rerouted off-campus.
 **Done when:** selecting ₦0 budget keeps UNN Medical Centre as the primary route even during high queue congestion.
-- [ ] Build scoring function and budget gate: /develop tiship routing
-- [ ] Verify zero cost lock against simulated rushes: /check verify tiship routing
-- [ ] Test scoring weights and budget invariants: /test tiship routing
+Spec 0005 (docs/specs/0005-tiship-routing/index.md) · code in `src/features/router/`
+- [x] Build scoring function and budget gate: /develop tiship routing
+- [x] Verify zero cost lock against simulated rushes: /check verify tiship routing
+- [x] Test scoring weights and budget invariants: /test tiship routing
 
 ### 7. Auto reroute engine & partner directory · planned
 Surface smart auto-reroute banners and promote accredited community pharmacies when clinic stockouts occur.
