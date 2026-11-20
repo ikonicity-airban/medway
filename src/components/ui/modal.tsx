@@ -41,7 +41,7 @@ export const Modal: React.FC<ModalProps> = ({
       aria-modal="true"
       aria-labelledby="modal-title"
       aria-describedby={description ? "modal-description" : undefined}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-ink/70 backdrop-blur-xs overflow-y-auto"
     >
       <div
         className="fixed inset-0"
@@ -49,14 +49,14 @@ export const Modal: React.FC<ModalProps> = ({
         onClick={onClose}
       />
 
-      <div className="relative z-10 w-full max-w-lg bg-surface border border-border rounded-lg shadow-md overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-        <div className="p-4 md:p-6 border-b border-border-subtle flex items-start justify-between gap-4">
+      <div className="relative z-10 w-full max-w-lg my-auto bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-150">
+        <div className="p-4 sm:p-5 border-b border-border flex items-start justify-between gap-4 shrink-0 bg-surface">
           <div>
-            <h2 id="modal-title" className="text-xl font-bold text-ink leading-tight">
+            <h2 id="modal-title" className="text-lg sm:text-xl font-bold text-ink leading-tight">
               {title}
             </h2>
             {description && (
-              <p id="modal-description" className="text-sm text-muted mt-1">
+              <p id="modal-description" className="text-xs sm:text-sm text-muted mt-1">
                 {description}
               </p>
             )}
@@ -66,13 +66,15 @@ export const Modal: React.FC<ModalProps> = ({
             type="button"
             onClick={onClose}
             aria-label="Close modal"
-            className="min-h-[44px] min-w-[44px] p-2 rounded-md text-muted hover:text-ink hover:bg-surface-subtle transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 shrink-0 flex items-center justify-center"
+            className="min-h-[44px] min-w-[44px] p-2 rounded-lg text-muted hover:text-ink hover:bg-surface-subtle transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 shrink-0 flex items-center justify-center"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-4 md:p-6">{children}</div>
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 overscroll-contain">
+          {children}
+        </div>
       </div>
     </div>
   );

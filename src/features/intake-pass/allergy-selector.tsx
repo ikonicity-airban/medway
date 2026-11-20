@@ -42,11 +42,11 @@ export const AllergySelector: React.FC<AllergySelectorProps> = ({
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <label className="text-xs font-mono font-semibold uppercase tracking-wider text-muted">
-          3. Declared Drug Allergies
+      <div className="flex items-center justify-between gap-2">
+        <label className="text-xs font-mono font-bold uppercase tracking-wider text-muted">
+          3. Declared Allergies
         </label>
-        <span className="text-xs text-muted font-mono">Self Advocacy Record</span>
+        <span className="text-[11px] text-muted font-mono shrink-0">Counter Safety</span>
       </div>
 
       {/* Quick selection chips */}
@@ -62,9 +62,9 @@ export const AllergySelector: React.FC<AllergySelectorProps> = ({
               type="button"
               onClick={() => handleChipClick(item)}
               aria-pressed={isSelected}
-              className={`px-3 py-2 text-xs font-semibold rounded-lg border min-h-[48px] transition-all flex items-center gap-1.5 focus-visible:outline-2 ${
+              className={`px-3 py-2 text-xs font-semibold rounded-lg border min-h-[44px] transition-all flex items-center gap-1.5 focus-visible:outline-2 ${
                 isSelected
-                  ? "bg-accent text-on-accent border-accent shadow-sm"
+                  ? "bg-accent/15 border-accent text-ink font-bold shadow-xs ring-1 ring-accent/30"
                   : "bg-surface border-border text-ink hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
               }`}
             >

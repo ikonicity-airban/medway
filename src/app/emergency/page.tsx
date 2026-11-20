@@ -15,7 +15,7 @@ export default function EmergencyPage() {
     <div className="min-h-screen flex flex-col bg-canvas text-body">
       <AppHeader hasRedFlags={true} />
 
-      <main className="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 space-y-6">
+      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         <div>
           <Link
             href="/"

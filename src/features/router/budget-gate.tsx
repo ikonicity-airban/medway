@@ -11,20 +11,20 @@ export interface BudgetGateProps {
 export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <label className="text-xs font-mono font-semibold uppercase tracking-wider text-muted">
-          Student Budget & Insurance Gate
+      <div className="flex items-center justify-between gap-2">
+        <label className="text-xs font-mono font-bold uppercase tracking-wider text-muted">
+          2. Student Budget & Insurance Gate
         </label>
-        <span className="text-xs text-muted font-mono">TISHIP Hard Lock Active</span>
+        <span className="text-[11px] text-muted font-mono shrink-0">TISHIP Hard Lock Active</span>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3" role="radiogroup">
+      <div className="space-y-2.5" role="radiogroup">
         {/* Option 1: ₦0 TISHIP Covered */}
         <label
-          className={`flex items-start gap-3 p-4 rounded-lg border cursor-pointer min-h-[56px] transition-all select-none ${
+          className={`flex items-start gap-3 p-3.5 rounded-lg border cursor-pointer min-h-[52px] transition-all select-none ${
             value === "tiship"
-              ? "bg-surface-subtle border-2 border-accent shadow-sm"
-              : "bg-surface border-border hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
+              ? "bg-accent/10 border-accent shadow-xs ring-1 ring-accent/30"
+              : "bg-surface border-border hover:border-muted hover:bg-surface-subtle"
           }`}
         >
           <input
@@ -33,29 +33,28 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
             value="tiship"
             checked={value === "tiship"}
             onChange={() => onChange("tiship")}
-            className="w-5 h-5 mt-0.5 rounded-full border-border text-accent focus:ring-accent"
+            className="w-4 h-4 mt-0.5 rounded-full border-border text-accent focus:ring-accent"
           />
 
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-ink">
+          <div className="space-y-1 min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs sm:text-sm font-bold text-ink">
                 ₦0 TISHIP Coverage
               </span>
               <Badge variant="tiship">On Campus</Badge>
             </div>
             <p className="text-xs text-muted leading-relaxed">
-              Mandatory health fee covers doctor consultations and essential stock at
-              UNN Medical Centre without out of pocket cost.
+              Mandatory health fee covers doctor consultations and essential stock at UNN Medical Centre without out-of-pocket cost.
             </p>
           </div>
         </label>
 
         {/* Option 2: Fast Retail Care */}
         <label
-          className={`flex items-start gap-3 p-4 rounded-lg border cursor-pointer min-h-[56px] transition-all select-none ${
+          className={`flex items-start gap-3 p-3.5 rounded-lg border cursor-pointer min-h-[52px] transition-all select-none ${
             value === "fast"
-              ? "bg-surface-subtle border-2 border-accent shadow-sm"
-              : "bg-surface border-border hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
+              ? "bg-accent/10 border-accent shadow-xs ring-1 ring-accent/30"
+              : "bg-surface border-border hover:border-muted hover:bg-surface-subtle"
           }`}
         >
           <input
@@ -64,19 +63,18 @@ export const BudgetGate: React.FC<BudgetGateProps> = ({ value, onChange }) => {
             value="fast"
             checked={value === "fast"}
             onChange={() => onChange("fast")}
-            className="w-5 h-5 mt-0.5 rounded-full border-border text-accent focus:ring-accent"
+            className="w-4 h-4 mt-0.5 rounded-full border-border text-accent focus:ring-accent"
           />
 
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-ink">
+          <div className="space-y-1 min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs sm:text-sm font-bold text-ink">
                 Fast Retail Care
               </span>
               <Badge variant="neutral">Off Campus</Badge>
             </div>
             <p className="text-xs text-muted leading-relaxed">
-              Paid retail care (<span className="tabular-nums">₦1,000 - ₦3,500</span>) for short queues at accredited PCN
-              pharmacies near Odim, Hilltop, or Ogige gates.
+              Paid retail care (<span className="tabular-nums">₦1,000 - ₦3,500</span>) for short queues at accredited PCN pharmacies near campus gates.
             </p>
           </div>
         </label>

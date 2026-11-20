@@ -24,6 +24,8 @@ export const TokenScanner: React.FC<TokenScannerProps> = ({
     category: string;
     allergies: string;
     tishipCovered: boolean;
+    prescriptionImage?: string;
+    pharmacistNotes?: string;
   } | null>(null);
 
   const handleVerify = async (e: React.FormEvent) => {
@@ -53,6 +55,8 @@ export const TokenScanner: React.FC<TokenScannerProps> = ({
         category: pass.category,
         allergies: pass.allergies,
         tishipCovered: pass.tishipCovered,
+        prescriptionImage: pass.prescriptionImage,
+        pharmacistNotes: pass.pharmacistNotes,
       });
 
       setStatusMessage(`Student pass ${pass.passCode} verified successfully.`);
@@ -195,6 +199,29 @@ export const TokenScanner: React.FC<TokenScannerProps> = ({
               )}
             </div>
           </div>
+
+          {/* Doctor Prescription Preview (if attached) */}
+          {verifiedPass.prescriptionImage && (
+            <div className="p-3 rounded-lg border border-border bg-surface space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-bold text-ink">Doctor Written Prescription</span>
+                <Badge variant="tiship">Photo Attached</Badge>
+              </div>
+              <div className="rounded overflow-hidden border border-border max-h-48 flex items-center justify-center bg-slate-50">
+                <img
+                  src={verifiedPass.prescriptionImage}
+                  alt="Doctor written prescription"
+                  className="w-full h-auto object-contain max-h-48"
+                />
+              </div>
+              {verifiedPass.pharmacistNotes && (
+                <div className="p-2 rounded bg-emerald-500/10 border border-emerald-500/20 text-xs text-ink space-y-0.5">
+                  <span className="font-bold text-emerald-800 dark:text-emerald-300 block">Pharmacist Decoded:</span>
+                  <p className="text-muted">{verifiedPass.pharmacistNotes}</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

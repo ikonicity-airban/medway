@@ -24,3 +24,7 @@ Update this registry whenever you add or modify a shared component.
 | `QueueCongestionMeter` | `src/features/telemetry/telemetry-charts.tsx` | default | implemented | Segmented queue load meter displaying low, moderate, and high distribution |
 | `FacilityStatusMatrix` | `src/features/telemetry/telemetry-charts.tsx` | default | implemented | High contrast operational matrix tracking stockouts and queue loads |
 | `TelemetryView` | `src/features/telemetry/telemetry-view.tsx` | default | implemented | Institutional population health logistics dashboard with JSON export |
+| `CampusMapView` | `src/features/router/campus-map-view.tsx` | default | implemented | Live Nsukka campus vector map with Google Places search, pin highlights, and direct intake pass triggers |
+| `PrescriptionUpload` | `src/features/router/prescription-upload.tsx` | default, attached | implemented | Doctor prescription camera capture and upload module with zoom modal and offline demo vector SVG slip |
+| `PrescriptionReviewConsole` | `src/features/partner/prescription-review.tsx` | default | implemented | PCN community pharmacist handwriting deciphering workstation with zoom magnifier, high contrast ink mode, and plain language transcription stamping |
+| `SplitViewPage` | `src/app/split/page.tsx` | default | implemented | Dual pane split screen live routing demo with real time sync, rush simulation, and WHO danger screening |

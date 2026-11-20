@@ -64,11 +64,11 @@ export const IntakePassView: React.FC<IntakePassViewProps> = ({
       )}
 
       {/* Main Intake Pass Card */}
-      <Card className="border-2 border-slate-900 bg-surface shadow-lg overflow-hidden">
+      <Card className="border border-border bg-surface shadow-md overflow-hidden rounded-2xl">
         {/* Pass Header */}
-        <CardHeader className="bg-slate-900 text-white text-center py-4 border-b-2 border-slate-900">
-          <div className="flex items-center justify-between gap-2 px-2 pb-2 border-b border-slate-700">
-            <span className="text-xs font-mono tracking-wider uppercase text-slate-300">
+        <CardHeader className="bg-surface-subtle border-b border-border text-center py-4 px-4 sm:px-6">
+          <div className="flex items-center justify-between gap-2 pb-2 border-b border-border-subtle">
+            <span className="text-xs font-mono font-bold tracking-wider uppercase text-muted">
               Official Student Intake Slip
             </span>
             {pass.tishipCovered ? (
@@ -78,21 +78,21 @@ export const IntakePassView: React.FC<IntakePassViewProps> = ({
             )}
           </div>
 
-          <div className="pt-3">
-            <CardTitle as="h2" className="text-3xl font-mono font-bold tracking-widest text-white">
+          <div className="pt-2 text-center">
+            <CardTitle as="h2" className="text-xl sm:text-2xl font-mono font-bold tracking-widest text-ink">
               {pass.passCode}
             </CardTitle>
-            <p className="text-xs text-slate-300 mt-1 flex items-center justify-center gap-1">
-              <Clock className="w-3.5 h-3.5 inline text-slate-400" />
-              <span>Generated: {formattedDate}</span>
+            <p className="text-xs text-muted mt-0.5 flex items-center justify-center gap-1 font-mono">
+              <Clock className="w-3.5 h-3.5 inline text-muted" />
+              <span>Issued: {formattedDate}</span>
             </p>
           </div>
         </CardHeader>
 
-        <CardContent className="p-4 md:p-6 space-y-4">
-          {/* Vector SVG QR Code */}
-          <div className="flex justify-center py-2">
-            <PassQrCode passCode={pass.passCode} size={160} />
+        <CardContent className="p-4 sm:p-6 space-y-4">
+          {/* Real Scannable Vector QR Code inside Viewfinder Ticket */}
+          <div className="flex justify-center py-1">
+            <PassQrCode passCode={pass.passCode} size={170} />
           </div>
 
           {/* Facility & Category Overview */}
@@ -139,6 +139,43 @@ export const IntakePassView: React.FC<IntakePassViewProps> = ({
               </div>
             </div>
           </div>
+
+          {/* Doctor Written Prescription Section */}
+          {pass.prescriptionImage && (
+            <div className="p-4 rounded-xl border border-border bg-surface space-y-3">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-mono font-bold uppercase tracking-wider text-muted">
+                  Doctor Written Prescription
+                </span>
+                <Badge variant="tiship">Photo Transmitted</Badge>
+              </div>
+
+              <div className="rounded-lg overflow-hidden border border-border bg-slate-50 p-2 flex items-center justify-center max-h-56">
+                <img
+                  src={pass.prescriptionImage}
+                  alt="Doctor written prescription slip"
+                  className="w-full h-auto object-contain max-h-52 rounded"
+                />
+              </div>
+
+              {pass.pharmacistNotes ? (
+                <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs text-ink space-y-1">
+                  <div className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300 font-bold font-mono text-[11px] uppercase">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>PCN Pharmacist Handwriting Clarification</span>
+                  </div>
+                  <p className="text-body font-medium leading-relaxed">
+                    {pass.pharmacistNotes}
+                  </p>
+                </div>
+              ) : (
+                <div className="p-2.5 rounded-lg bg-surface-subtle text-[11px] text-muted flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-muted shrink-0" />
+                  <span>Awaiting dispensing pharmacist handwriting clarification at the counter.</span>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Telemetry Token (if issued) */}
           {tokenCode && (

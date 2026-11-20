@@ -1,7 +1,9 @@
 export type SyncMessage =
   | { type: "facility_updated"; facilityId: string; timestamp: number }
   | { type: "stock_toggled"; facilityId: string; category: string; inStock: boolean }
-  | { type: "queue_updated"; facilityId: string; queue: string };
+  | { type: "queue_updated"; facilityId: string; queue: string }
+  | { type: "prescription_uploaded"; passCode: string; facilityId: string }
+  | { type: "prescription_clarified"; passCode: string; notes: string };
 
 type Listener = (msg: SyncMessage) => void;
 

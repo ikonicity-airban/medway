@@ -18,8 +18,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-canvas text-body antialiased flex flex-col items-center">
-        <div className="w-full max-w-xl min-h-screen flex flex-col bg-canvas border-x border-border/40 shadow-sm">
+      <body className="min-h-screen bg-canvas text-body antialiased flex flex-col">
+        <div className="w-full min-h-screen flex flex-col bg-canvas">
           {children}
         </div>
       </body>

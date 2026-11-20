@@ -35,11 +35,11 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <label className="text-xs font-mono font-semibold uppercase tracking-wider text-muted">
+      <div className="flex items-center justify-between gap-2">
+        <label className="text-xs font-mono font-bold uppercase tracking-wider text-muted">
           1. Select Care Category
         </label>
-        <span className="text-xs text-muted font-mono">Non Diagnostic Logistics</span>
+        <span className="text-[11px] text-muted font-mono shrink-0">Non-Diagnostic</span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -52,33 +52,33 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
               key={category}
               type="button"
               onClick={() => onSelectCategory(category)}
-              className={`flex items-start justify-between p-3.5 rounded-lg border text-left min-h-[56px] transition-all focus-visible:outline-2 focus-visible:outline-offset-2 ${
+              className={`group flex items-start justify-between p-3 rounded-lg border text-left min-h-[52px] transition-all focus-visible:outline-2 focus-visible:outline-offset-2 ${
                 isSelected
-                  ? "bg-surface-subtle border-2 border-accent text-ink shadow-sm"
-                  : "bg-surface border-border text-body hover:border-muted hover:bg-surface-subtle active:bg-border-subtle"
+                  ? "bg-accent/10 border-accent text-ink shadow-xs ring-1 ring-accent/30"
+                  : "bg-surface border-border text-body hover:border-muted hover:bg-surface-subtle"
               }`}
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2.5 min-w-0">
                 <div
-                  className={`mt-0.5 shrink-0 ${
-                    isSelected ? "text-accent" : "text-muted"
+                  className={`mt-0.5 shrink-0 transition-colors ${
+                    isSelected ? "text-accent" : "text-muted group-hover:text-ink"
                   }`}
                 >
                   {meta.icon}
                 </div>
-                <div>
-                  <span className="text-sm font-bold text-ink block leading-snug">
+                <div className="min-w-0">
+                  <span className="text-xs sm:text-sm font-bold text-ink block leading-snug truncate">
                     {category}
                   </span>
-                  <span className="text-xs text-muted block mt-0.5">
+                  <span className="text-[11px] text-muted block mt-0.5 truncate">
                     {meta.subtitle}
                   </span>
                 </div>
               </div>
 
               {isSelected && (
-                <div className="w-5 h-5 rounded-full bg-accent text-on-accent flex items-center justify-center shrink-0 mt-0.5">
-                  <Check className="w-3.5 h-3.5" />
+                <div className="w-4 h-4 rounded-full bg-accent text-on-accent flex items-center justify-center shrink-0 mt-0.5 ml-1">
+                  <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
               )}
             </button>

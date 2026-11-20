@@ -14,6 +14,8 @@ export interface CreateIntakePassInput {
   tishipCovered: boolean;
   redFlagsCleared: boolean;
   isCampusClinic?: boolean;
+  prescriptionImage?: string;
+  pharmacistNotes?: string;
 }
 
 export interface CreateCrowdTokenInput {
@@ -63,6 +65,8 @@ export function createIntakePass(input: CreateIntakePassInput): IntakePass {
     allergies: input.allergies?.trim() || "None",
     tishipCovered: input.tishipCovered,
     redFlagsCleared: input.redFlagsCleared,
+    prescriptionImage: input.prescriptionImage,
+    pharmacistNotes: input.pharmacistNotes,
   };
 
   return IntakePassSchema.parse(pass);
@@ -141,7 +145,7 @@ export function formatPassText(pass: IntakePass): string {
     timeStyle: "short",
   });
 
-  return [
+  const lines = [
     "MEDWAY STUDENT INTAKE PASS",
     `Pass Code: ${pass.passCode}`,
     `Facility: ${pass.facilityName}`,
@@ -149,7 +153,17 @@ export function formatPassText(pass: IntakePass): string {
     `Declared Allergies: ${pass.allergies}`,
     `TISHIP Status: ${pass.tishipCovered ? "₦0 Covered" : "Retail Care"}`,
     `Generated: ${dateStr}`,
-    "---",
-    "Note: Present this code upon arrival. Not a prescription.",
-  ].join("\n");
+  ];
+
+  if (pass.prescriptionImage) {
+    lines.push("Prescription: Doctor Written Rx Attached");
+  }
+
+  if (pass.pharmacistNotes) {
+    lines.push(`Pharmacist Decoded Notes: ${pass.pharmacistNotes}`);
+  }
+
+  lines.push("---");
+  lines.push("Note: Present this code upon arrival. Not a prescription.");
+  return lines.join("\n");
 }

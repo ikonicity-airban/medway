@@ -53,6 +53,8 @@ export const IntakePassDbRowSchema = z.object({
   allergies_declared: z.string().max(256),
   tiship_applied: z.boolean(),
   red_flags_cleared: z.boolean(),
+  prescription_image: z.string().optional(),
+  pharmacist_notes: z.string().optional(),
   created_at: z.string(),
 });
 export type IntakePassDbRow = z.infer<typeof IntakePassDbRowSchema>;
@@ -99,6 +101,8 @@ export const IntakePassSchema = z.object({
   allergies: z.string().max(256),
   tishipCovered: z.boolean(),
   redFlagsCleared: z.boolean(),
+  prescriptionImage: z.string().optional(),
+  pharmacistNotes: z.string().optional(),
 });
 export type IntakePass = z.infer<typeof IntakePassSchema>;
 

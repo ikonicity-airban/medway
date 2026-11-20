@@ -9,10 +9,10 @@ import { ArrowLeft } from "lucide-react";
 
 export default function PartnerPage() {
   return (
-    <div className="min-h-screen bg-canvas flex flex-col">
-      <AppHeader isOffline={false} />
+    <div className="min-h-screen bg-canvas flex flex-col font-sans antialiased">
+      <AppHeader activeNav="partner" isOffline={false} />
 
-      <main className="flex-1 max-w-4xl w-full mx-auto p-4 md:p-6 space-y-6">
+      <main className="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         <div className="flex items-center justify-between">
           <Link href="/">
             <Button variant="ghost" size="sm" className="gap-1.5 text-muted hover:text-ink">
