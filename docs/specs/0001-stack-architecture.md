@@ -1,6 +1,6 @@
 # 0001 Stack and Architecture
 
-**Status**: Proposed
+**Status**: In Progress
 **Date**: 2026-11-20
 
 ## Summary
