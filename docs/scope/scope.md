@@ -55,13 +55,14 @@ Spec 0003 · code in `src/components/ui/`
 
 ## Slices
 
-### 5. Emergency red flag triage & hospital escalation · planned
+### 5. Emergency red flag triage & hospital escalation · done
 Implement the deterministic danger sign checklist and immediate redirection to UNN Emergency Bay and Bishop Shanahan Specialist Hospital.
 **Done when:** selecting any danger sign immediately hides pharmacy options and displays the emergency ward contact card with 1-tap dialer.
-- [ ] Design danger sign interaction (spec): /architect emergency triage
-- [ ] Build checklist and emergency modal: /develop emergency triage
-- [ ] Verify safety lockout behavior: /check verify emergency triage
-- [ ] Test deterministic checklist logic: /test emergency triage
+Spec 0004 · code in `src/features/triage/`
+- [x] Design danger sign interaction (spec): /architect emergency triage
+- [x] Build checklist and emergency modal: /develop emergency triage
+- [x] Verify safety lockout behavior: /check verify emergency triage
+- [x] Test deterministic checklist logic: /test emergency triage
 
 ### 6. TISHIP routing & zero cost lock · planned
 Implement the facility ranking engine with the TISHIP Hard Lock enforcing that students with ₦0 budget are never rerouted off-campus.

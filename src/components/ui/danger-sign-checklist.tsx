@@ -38,35 +38,60 @@ export const DANGER_SIGNS: readonly DangerSign[] = [
 ] as const;
 
 export interface DangerSignChecklistProps {
+  selectedFlags?: string[];
+  onToggleSign?: (signId: string) => void;
   onDangerSignChange?: (hasRedFlags: boolean, selectedFlags: string[]) => void;
   emergencyPhone?: string;
+  showEmergencyBanner?: boolean;
 }
 
 export const DangerSignChecklist: React.FC<DangerSignChecklistProps> = ({
+  selectedFlags,
+  onToggleSign,
   onDangerSignChange,
   emergencyPhone = "+2348037704288", // UNN Medical Centre Emergency Unit
+  showEmergencyBanner = true,
 }) => {
-  const [selectedSigns, setSelectedSigns] = React.useState<Set<string>>(new Set());
+  const [internalSelected, setInternalSelected] = React.useState<Set<string>>(new Set());
+
+  const isControlled = selectedFlags !== undefined;
+  const currentSelected = React.useMemo(() => {
+    return isControlled ? new Set(selectedFlags) : internalSelected;
+  }, [isControlled, selectedFlags, internalSelected]);
 
   const handleToggle = (id: string) => {
-    setSelectedSigns((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
+    if (onToggleSign) {
+      onToggleSign(id);
+    }
+
+    if (!isControlled) {
+      setInternalSelected((prev) => {
+        const next = new Set(prev);
+        if (next.has(id)) {
+          next.delete(id);
+        } else {
+          next.add(id);
+        }
+        const hasFlags = next.size > 0;
+        onDangerSignChange?.(hasFlags, Array.from(next));
+        return next;
+      });
+    } else {
+      const nextSet = new Set(currentSelected);
+      if (nextSet.has(id)) {
+        nextSet.delete(id);
       } else {
-        next.add(id);
+        nextSet.add(id);
       }
-      const hasFlags = next.size > 0;
-      onDangerSignChange?.(hasFlags, Array.from(next));
-      return next;
-    });
+      onDangerSignChange?.(nextSet.size > 0, Array.from(nextSet));
+    }
   };
 
-  const hasRedFlags = selectedSigns.size > 0;
+  const hasRedFlags = currentSelected.size > 0;
 
   return (
     <div className="space-y-4">
-      {hasRedFlags && (
+      {hasRedFlags && showEmergencyBanner && (
         <div
           role="alert"
           aria-live="assertive"
@@ -115,7 +140,7 @@ export const DangerSignChecklist: React.FC<DangerSignChecklistProps> = ({
 
         <div className="space-y-2 pt-2">
           {DANGER_SIGNS.map((sign) => {
-            const isChecked = selectedSigns.has(sign.id);
+            const isChecked = currentSelected.has(sign.id);
             return (
               <label
                 key={sign.id}
@@ -144,7 +169,7 @@ export const DangerSignChecklist: React.FC<DangerSignChecklistProps> = ({
           })}
         </div>
 
-        {hasRedFlags && (
+        {hasRedFlags && showEmergencyBanner && (
           <div className="pt-2">
             <Button
               variant="emergency"
