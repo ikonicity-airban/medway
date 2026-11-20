@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { FacilityCard } from "@/components/ui/facility-card";
-import { IntakePassCard } from "@/components/ui/intake-pass-card";
 import { Modal } from "@/components/ui/modal";
 import { CategorySelector } from "./category-selector";
 import { BudgetChoice, BudgetGate } from "./budget-gate";
@@ -14,6 +12,7 @@ import { getOfflineStorage, seedInitialData } from "@/lib/offline-db";
 import { CareCategory, Facility, IntakePass, UNN_PILOT_FACILITIES } from "@/types";
 import { AutoRerouteBanner } from "./auto-reroute-banner";
 import { PartnerDirectory } from "./partner-directory";
+import { AllergySelector, IntakePassView } from "@/features/intake-pass";
 import { AlertCircle, Building2, Compass, Lock } from "lucide-react";
 
 export interface RouterViewProps {
@@ -32,6 +31,8 @@ export const RouterView: React.FC<RouterViewProps> = ({
   const [facilities, setFacilities] = React.useState<Facility[]>([
     ...UNN_PILOT_FACILITIES,
   ]);
+  const [declaredAllergies, setDeclaredAllergies] =
+    React.useState<string>("None");
   const [activePass, setActivePass] = React.useState<IntakePass | null>(null);
   const [isPassModalOpen, setIsPassModalOpen] = React.useState(false);
 
@@ -80,7 +81,7 @@ export const RouterView: React.FC<RouterViewProps> = ({
       facilityId: facility.id,
       facilityName: facility.name,
       category: selectedCategory,
-      allergies: "None",
+      allergies: declaredAllergies,
       tishipCovered: facility.tishipCovered,
       redFlagsCleared: true,
       isCampusClinic: facility.isCampusClinic,
@@ -147,6 +148,14 @@ export const RouterView: React.FC<RouterViewProps> = ({
           {/* Budget Gate */}
           <section className="p-4 md:p-6 bg-surface border border-border rounded-lg shadow-sm">
             <BudgetGate value={budgetChoice} onChange={setBudgetChoice} />
+          </section>
+
+          {/* Drug Allergy Declaration */}
+          <section className="p-4 md:p-6 bg-surface border border-border rounded-lg shadow-sm">
+            <AllergySelector
+              value={declaredAllergies}
+              onChange={setDeclaredAllergies}
+            />
           </section>
 
           {/* Auto Reroute Banner if clinic is out of stock */}
@@ -221,19 +230,10 @@ export const RouterView: React.FC<RouterViewProps> = ({
           title="Digital Student Intake Pass"
           description="Present this pass to the facility attendant upon arrival."
         >
-          <div className="space-y-4">
-            <IntakePassCard pass={activePass} />
-
-            <div className="pt-2 text-center">
-              <Button
-                variant="primary"
-                fullWidth
-                onClick={() => setIsPassModalOpen(false)}
-              >
-                Close Pass
-              </Button>
-            </div>
-          </div>
+          <IntakePassView
+            pass={activePass}
+            onClose={() => setIsPassModalOpen(false)}
+          />
         </Modal>
       )}
     </div>

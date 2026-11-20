@@ -16,7 +16,7 @@ MedWay is a campus care router and pre-triage platform for Nigerian tertiary ins
 | 5 | Emergency red flag triage & hospital escalation | Slice 1 | done |
 | 6 | TISHIP routing & zero cost lock | Slice 2 | done |
 | 7 | Auto reroute engine & partner directory | Slice 3 | done |
-| 8 | Student self advocacy intake pass | Slice 4 | planned |
+| 8 | Student self advocacy intake pass | Slice 4 | done |
 | 9 | Partner dashboard & counter check in telemetry | Slice 5 | planned |
 | 10 | Institutional population health telemetry feed | Slice 6 | planned |
 
@@ -80,12 +80,13 @@ Spec 0006 (docs/specs/0006-auto-reroute/index.md) · code in `src/features/route
 - [x] Verify reroute transitions and stock decay: /check verify auto reroute
 - [x] Test edge case reroute permutations: /test auto reroute
 
-### 8. Student self advocacy intake pass · planned
+### 8. Student self advocacy intake pass · done
 Generate a high contrast, privacy preserving intake slip (MW-UNN-XXX) with allergy alerts, QR code, and plain text clipboard copy.
 **Done when:** clicking generate pass creates a readable slip reflecting user allergies with one click copy to clipboard.
-- [ ] Implement intake pass generator and SVG QR renderer: /develop intake pass
-- [ ] Verify clipboard export and high contrast legibility: /check verify intake pass
-- [ ] Test intake data serialization and allergy invariants: /test intake pass
+Spec 0007 (docs/specs/0007-intake-pass/index.md) · code in `src/features/intake-pass/` and `src/app/pass/`
+- [x] Implement intake pass generator and SVG QR renderer: /develop intake pass
+- [x] Verify clipboard export and high contrast legibility: /check verify intake pass
+- [x] Test intake data serialization and allergy invariants: /test intake pass
 
 ### 9. Partner dashboard & counter check in telemetry · planned
 Provide an authenticated portal for PCN verified pharmacies to toggle stock, update queue levels, and scan student counter tokens.

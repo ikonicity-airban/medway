@@ -133,3 +133,23 @@ export function calculateAggregatedQueue(
   }
   return "low";
 }
+
+// Format an intake pass into a clean plain text summary for clipboard or SMS sharing
+export function formatPassText(pass: IntakePass): string {
+  const dateStr = new Date(pass.timestamp).toLocaleString("en-NG", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+
+  return [
+    "MEDWAY STUDENT INTAKE PASS",
+    `Pass Code: ${pass.passCode}`,
+    `Facility: ${pass.facilityName}`,
+    `Care Category: ${pass.category}`,
+    `Declared Allergies: ${pass.allergies}`,
+    `TISHIP Status: ${pass.tishipCovered ? "₦0 Covered" : "Retail Care"}`,
+    `Generated: ${dateStr}`,
+    "---",
+    "Note: Present this code upon arrival. Not a prescription.",
+  ].join("\n");
+}
